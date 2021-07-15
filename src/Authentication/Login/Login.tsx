@@ -5,14 +5,6 @@ import {TextInput} from '../components/Form';
 //import Checkbox from '../components/Form/Checkbox';
 import {Routes, StackNavigationProps} from '../../components/Navigation';
 import {Formik} from 'formik';
-import * as Yup from 'yup';
-const LoginSchema = Yup.object().shape({
-  password: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
-});
 
 const Login = ({}: StackNavigationProps<Routes, 'Login'>) => {
   const footer = (
@@ -41,7 +33,6 @@ const Login = ({}: StackNavigationProps<Routes, 'Login'>) => {
           Use your credentials below and login to your account
         </Text>
         <Formik
-          validationSchema={LoginSchema}
           initialValues={{email: '', password: ''}} //remember:true
           onSubmit={values => console.log(values)}>
           {({
