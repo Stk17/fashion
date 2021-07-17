@@ -16,7 +16,7 @@ interface TextInputProps extends RNTextInputProps {
 
 const TextInput = ({icon, touched, error, ...props}: TextInputProps) => {
   const theme = useTheme();
-  const SIZE = theme.borderRadii.m * 2;
+  const SIZE = theme.borderRadii.m * 2.5;
   const reColor = !touched ? 'text' : error ? 'danger' : 'primary';
   const color = theme.colors[reColor];
 
@@ -41,11 +41,16 @@ const TextInput = ({icon, touched, error, ...props}: TextInputProps) => {
         <Box
           height={SIZE}
           width={SIZE}
-          borderRadius="m"
           justifyContent="center"
           alignItems="center"
-          backgroundColor={!error ? 'primary' : 'danger'}>
-          <Icon name={!error ? 'check' : 'x'} color="white" size={16} />
+          backgroundColor={!error ? 'primary' : 'danger'}
+          style={{borderRadius: SIZE / 2}}>
+          <Icon
+            name={!error ? 'check' : 'x'}
+            color="white"
+            size={16}
+            style={{textAlign: 'center'}}
+          />
         </Box>
       )}
     </Box>

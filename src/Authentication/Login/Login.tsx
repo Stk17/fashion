@@ -2,7 +2,7 @@ import React from 'react';
 //import SocialLogin from '../components/SocialLogin';
 import {Container, Button, Text, Box} from '../../components';
 import {TextInput} from '../components/Form';
-//import Checkbox from '../components/Form/Checkbox';
+import {Checkbox} from '../components/Form';
 import {Routes, StackNavigationProps} from '../../components/Navigation';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
@@ -42,7 +42,7 @@ const Login = ({}: StackNavigationProps<Routes, 'Login'>) => {
         </Text>
         <Formik
           validationSchema={LoginSchema}
-          initialValues={{email: '', password: ''}} //remember:true
+          initialValues={{email: '', password: '', remember: true}}
           onSubmit={values => console.log(values)}>
           {({
             handleChange,
@@ -73,7 +73,11 @@ const Login = ({}: StackNavigationProps<Routes, 'Login'>) => {
                 touched={touched.password}
               />
               <Box flexDirection="row" justifyContent="center">
-                {/*<Checkbox label="Remember me" checked={values.remember} onChange={()=> setFieldValue("remember",!values.remember)}/>*/}
+                <Checkbox
+                  label="Remember me"
+                  checked={values.remember}
+                  onChange={() => setFieldValue('remember', !values.remember)}
+                />
                 <Button variant="transparent" onPress={() => true}>
                   <Text color="primary"> Forgot password</Text>
                 </Button>
