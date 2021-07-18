@@ -9,6 +9,7 @@ export const theme = {
     grey: '#F4F0EF',
     darkGrey: '#8A8D90',
     danger: '#FF0058',
+    primaryLight: '#E7F9F7',
   },
   spacing: {
     s: 8,
@@ -31,7 +32,7 @@ export const theme = {
       textAlign: 'center',
     },
     title1: {
-      fontSize: 24,
+      fontSize: 28,
       fontFamily: 'SFProDisplay-SemiBold',
       color: 'secondary',
     },
@@ -42,10 +43,10 @@ export const theme = {
       color: 'secondary',
     },
     body: {
-      fontSize: 14,
-      lineHeight: 21,
+      fontSize: 16,
+      lineHeight: 24,
       fontFamily: 'SFProDisplay-Regular',
-      text: 'rgba(12,13,52,0.7)',
+      color: 'text',
     },
     button: {
       fontSize: 15,

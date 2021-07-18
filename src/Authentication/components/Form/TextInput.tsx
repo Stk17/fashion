@@ -5,7 +5,6 @@ import {
   TextInputProps as RNTextInputProps,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-
 import {Box, useTheme} from '../../../components';
 
 interface TextInputProps extends RNTextInputProps {
@@ -24,7 +23,7 @@ const TextInput = forwardRef<RNTextInput, TextInputProps>(
     return (
       <Box
         flexDirection="row"
-        height={48}
+        height={55}
         borderWidth={StyleSheet.hairlineWidth}
         borderRadius="s"
         padding="s"

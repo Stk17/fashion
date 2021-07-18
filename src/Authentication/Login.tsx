@@ -1,9 +1,9 @@
 import React, {useRef} from 'react';
 //import SocialLogin from '../components/SocialLogin';
 import {Container, Button, Text, Box} from '../components';
-//import { TextInput } from './components/Form';
 import {TextInput as RNTextInput} from 'react-native';
 import {Checkbox} from './components/Form';
+import {TextInput} from './components/Form';
 import {Routes, StackNavigationProps} from '../components/Navigation';
 import {useFormik} from 'formik';
 import Footer from './components/Footer';
@@ -91,7 +91,7 @@ const Login = ({navigation}: StackNavigationProps<Routes, 'Login'>) => {
               <Text color="primary"> Forgot password</Text>
             </Button>
           </Box>
-          <Box alignItems="center" marginTop="m">
+          <Box alignItems="center" marginTop="m" marginBottom="xl">
             <Button
               variant="primary"
               onPress={handleSubmit}
