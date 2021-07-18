@@ -7,16 +7,14 @@ import {Checkbox} from './components/Form';
 import {Routes, StackNavigationProps} from '../components/Navigation';
 import {useFormik} from 'formik';
 import Footer from './components/Footer';
-
-{
-  /* const LoginSchema =Yup.object().shape({
+import * as Yup from 'yup';
+const LoginSchema = Yup.object().shape({
   password: Yup.string()
-  .min(2, "Too Short!")
-  .max(50, "Too Long!")
-  .required("Required"),
-  email: Yup.string().email("Invalid email").required("Required"),});
- */
-}
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+});
 
 const Login = ({navigation}: StackNavigationProps<Routes, 'Login'>) => {
   const {
@@ -28,7 +26,7 @@ const Login = ({navigation}: StackNavigationProps<Routes, 'Login'>) => {
     errors,
     touched,
   } = useFormik({
-    //validationSchema :LoginSchema,
+    validationSchema: LoginSchema,
     initialValues: {email: '', password: '', remember: true},
     onSubmit: values => console.log(values),
   });

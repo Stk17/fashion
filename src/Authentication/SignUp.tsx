@@ -7,23 +7,21 @@ import {Checkbox} from './components/Form';
 import {Routes, StackNavigationProps} from '../components/Navigation';
 import {useFormik} from 'formik';
 import Footer from './components/Footer';
-
-{
-  /* const SingUpSchema =Yup.object().shape({
+import * as Yup from 'yup';
+const SignUpSchema = Yup.object().shape({
   password: Yup.string()
-  .min(2, "Too Short!")
-  .max(50, "Too Long!")
-  .required("Required"),
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
   passwordConfirmation: Yup.string()
-  .equals([Yup.ref("password")], "Passwords don't match")
-  .required("Required"), 
-   email: Yup.string().email("Invalid email").required("Required"),});
- */
-}
+    .equals([Yup.ref('password')], "Passwords don't match")
+    .required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+});
 
 const SignUp = ({navigation}: StackNavigationProps<Routes, 'SignUp'>) => {
   const {handleChange, handleBlur, handleSubmit, errors, touched} = useFormik({
-    //validationSchema :SignUpSchema,
+    validationSchema: SignUpSchema,
     initialValues: {
       email: '',
       password: '',
