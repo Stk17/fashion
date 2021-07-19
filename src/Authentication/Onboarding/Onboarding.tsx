@@ -9,7 +9,10 @@ import Animated, {
   useDerivedValue,
 } from 'react-native-reanimated';
 import {interpolateColor} from 'react-native-reanimated';
-import {Routes, StackNavigationProps} from '../../components/Navigation';
+import {
+  AuthenticationRoutes,
+  StackNavigationProps,
+} from '../../components/Navigation';
 import {makeStyles, Theme} from '../../components/Theme';
 import Dot from './Dot';
 import Slide, {SLIDE_HEIGHT} from './Slide';
@@ -103,7 +106,7 @@ const slides = [
 export const assets = slides.map(slide => slide.picture.src);
 const Onboarding = ({
   navigation,
-}: StackNavigationProps<Routes, 'Onboarding'>) => {
+}: StackNavigationProps<AuthenticationRoutes, 'Onboarding'>) => {
   const styles = useStyles();
   const theme = useTheme();
   const scroll = useRef<Animated.ScrollView>(null);

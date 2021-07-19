@@ -1,10 +1,13 @@
 import React, {useRef} from 'react';
 //import SocialLogin from '../components/SocialLogin';
 import {Container, Button, Text, Box} from '../components';
-import {TextInput} from './components/Form';
+import {TextInput} from '../components/Form';
 import {TextInput as RNTextInput} from 'react-native';
-import {Checkbox} from './components/Form';
-import {Routes, StackNavigationProps} from '../components/Navigation';
+import {Checkbox} from '../components/Form';
+import {
+  AuthenticationRoutes,
+  StackNavigationProps,
+} from '../components/Navigation';
 import {useFormik} from 'formik';
 import Footer from './components/Footer';
 import * as Yup from 'yup';
@@ -19,7 +22,9 @@ const SignUpSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
 });
 
-const SignUp = ({navigation}: StackNavigationProps<Routes, 'SignUp'>) => {
+const SignUp = ({
+  navigation,
+}: StackNavigationProps<AuthenticationRoutes, 'SignUp'>) => {
   const {handleChange, handleBlur, handleSubmit, errors, touched} = useFormik({
     validationSchema: SignUpSchema,
     initialValues: {
@@ -40,7 +45,7 @@ const SignUp = ({navigation}: StackNavigationProps<Routes, 'SignUp'>) => {
     />
   );
   return (
-    <Container {...{footer}}>
+    <Container pattern={1} {...{footer}}>
       <Box padding="xl">
         <Text variant="title1" textAlign="center" marginBottom="l">
           Create account
@@ -99,7 +104,7 @@ const SignUp = ({navigation}: StackNavigationProps<Routes, 'SignUp'>) => {
               secureTextEntry
             />
           </Box>
-          <Box alignItems="center" marginTop="m">
+          <Box alignItems="center" marginTop="s">
             <Button
               variant="primary"
               onPress={handleSubmit}
