@@ -2,10 +2,7 @@ import React from 'react';
 import {Dimensions, Image} from 'react-native';
 import {Button} from '../components';
 import {Box, Text, useTheme} from '../components/Theme';
-import {
-  AuthenticationRoutes,
-  StackNavigationProps,
-} from '../components/Navigation';
+import {AuthNavigationProps} from '../components/Navigation';
 import {BorderlessButton} from 'react-native-gesture-handler';
 
 const picture = {
@@ -15,9 +12,7 @@ const picture = {
 };
 const {width} = Dimensions.get('window');
 export const assets = [picture.src];
-const Welcome = ({
-  navigation,
-}: StackNavigationProps<AuthenticationRoutes, 'Welcome'>) => {
+const Welcome = ({navigation}: AuthNavigationProps<'Welcome'>) => {
   const theme = useTheme();
   return (
     <Box flex={1} backgroundColor="white">

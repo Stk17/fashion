@@ -1,11 +1,12 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons';
+import Icon from 'react-native-vector-icons/Feather';
 import {Theme, Box, Text} from './Theme';
 export interface RoundedIconProps {
   name: string;
   size: number;
   color: keyof Theme['colors'];
   backgroundColor: keyof Theme['colors'];
+  iconRatio: number;
 }
 
 const RoundedIcon = ({
@@ -13,8 +14,9 @@ const RoundedIcon = ({
   size,
   color,
   backgroundColor,
+  iconRatio,
 }: RoundedIconProps) => {
-  const iconSize = size * 0.7;
+  const iconSize = size * iconRatio;
   return (
     <Box
       height={size}
@@ -23,11 +25,15 @@ const RoundedIcon = ({
       alignItems="center"
       style={{borderRadius: size / 2}}
       {...{backgroundColor}}>
-      <Text style={{width: iconSize, height: iconSize}}>
-        <Icon size={iconSize} {...{name, color}} />
+      <Text style={{width: iconSize, height: iconSize}} {...{color}}>
+        <Icon size={iconSize} {...{name}} />
       </Text>
     </Box>
   );
+};
+
+RoundedIcon.defaultProps = {
+  iconRatio: 0.7,
 };
 
 export default RoundedIcon;

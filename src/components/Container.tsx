@@ -58,7 +58,10 @@ const Container = ({children, footer, pattern}: ContainerProps) => {
           flex={1}
           borderRadius="xl"
           borderTopLeftRadius={0}
-          backgroundColor="white">
+          backgroundColor="white"
+          flex={1}
+          justifyContent="center"
+          padding="xl">
           {children}
         </Box>
         <Box backgroundColor="secondary" paddingTop="xl" paddingBottom="xl">

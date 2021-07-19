@@ -3,7 +3,7 @@ import {Linking} from 'react-native';
 import {Box, Container, Button, Text} from '../components';
 import {
   AuthenticationRoutes,
-  StackNavigationProps,
+  AuthNavigationProps,
 } from '../components/Navigation';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -15,7 +15,7 @@ const ForgotPasswordSchema = Yup.object().shape({
 
 const ForgotPassword = ({
   navigation,
-}: StackNavigationProps<AuthenticationRoutes, 'ForgotPassword'>) => {
+}: AuthNavigationProps<'ForgotPassword'>) => {
   const {handleChange, handleBlur, handleSubmit, errors, touched} = useFormik({
     validationSchema: ForgotPasswordSchema,
     initialValues: {email: ''},
@@ -30,36 +30,34 @@ const ForgotPassword = ({
   );
   return (
     <Container pattern={2} {...{footer}}>
-      <Box padding="xl" justifyContent="center" flex={1} marginBottom="xl">
-        <Text variant="title1" textAlign="center" marginBottom="xl">
-          Forgot password?
-        </Text>
-        <Text variant="body" textAlign="center" marginBottom="xl">
-          Enter the email address associated with your account
-        </Text>
-        <Box>
-          <Box marginBottom="m">
-            <TextInput
-              icon="mail"
-              placeholder="Enter your Email"
-              onChangeText={handleChange('email')}
-              onBlur={handleBlur('email')}
-              error={errors.email}
-              touched={touched.email}
-              autoCompleteType="email"
-              autoCapitalize="none"
-              returnKeyLabel="go"
-              returnKeyType="go"
-              onSubmitEditing={() => handleSubmit()}
-            />
-          </Box>
-          <Box alignItems="center" marginTop="xl" marginBottom="xl">
-            <Button
-              variant="primary"
-              onPress={handleSubmit}
-              label="Reset password"
-            />
-          </Box>
+      <Text variant="title1" textAlign="center" marginBottom="xl">
+        Forgot password?
+      </Text>
+      <Text variant="body" textAlign="center" marginBottom="xl">
+        Enter the email address associated with your account
+      </Text>
+      <Box>
+        <Box marginBottom="m">
+          <TextInput
+            icon="mail"
+            placeholder="Enter your Email"
+            onChangeText={handleChange('email')}
+            onBlur={handleBlur('email')}
+            error={errors.email}
+            touched={touched.email}
+            autoCompleteType="email"
+            autoCapitalize="none"
+            returnKeyLabel="go"
+            returnKeyType="go"
+            onSubmitEditing={() => handleSubmit()}
+          />
+        </Box>
+        <Box alignItems="center" marginTop="xl" marginBottom="xl">
+          <Button
+            variant="primary"
+            onPress={handleSubmit}
+            label="Reset password"
+          />
         </Box>
       </Box>
     </Container>

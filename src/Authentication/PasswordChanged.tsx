@@ -7,15 +7,12 @@ import {
   RoundedIconButton,
   RoundedIcon,
 } from '../components';
-import {
-  AuthenticationRoutes,
-  StackNavigationProps,
-} from '../components/Navigation';
+import {AuthNavigationProps} from '../components/Navigation';
 import Icon from 'react-native-vector-icons/Feather';
 const SIZE = 80;
 const PasswordChanged = ({
   navigation,
-}: StackNavigationProps<AuthenticationRoutes, 'PasswordChanged'>) => {
+}: AuthNavigationProps<'PasswordChanged'>) => {
   return (
     <Container
       pattern={0}
@@ -30,7 +27,7 @@ const PasswordChanged = ({
           />
         </Box>
       }>
-      <Box flex={1} justifyContent="center" alignItems="center" padding="xl">
+      <Box alignSelf="center">
         <RoundedIcon
           name="check"
           size={SIZE}
