@@ -1,15 +1,11 @@
 import React from 'react';
 import {StyleSheet, Dimensions, ImageRequireSource} from 'react-native';
 import {PanGestureHandler} from 'react-native-gesture-handler';
-import Animated, {add, Extrapolate, withSpring} from 'react-native-reanimated';
-import {
-  interpolatePath,
-  mix,
-  mixColor,
-  usePanGestureHandler,
-} from 'react-native-redash';
-import {Box} from '../../components';
+import Animated, {add, Extrapolate, interpolate} from 'react-native-reanimated';
+import {mix, mixColor, usePanGestureHandler} from 'react-native-redash';
 import {useSpring} from './Animations';
+import {Box} from '../../components';
+
 const {width: wWidth} = Dimensions.get('window');
 const width = wWidth * 0.75;
 const height = width * (425 / 294);
@@ -31,7 +27,7 @@ const Card = ({position, onSwipe, source, step}: CardProps) => {
     outputRange: [1.2, 1],
     extrapolate: Extrapolate.CLAMP,
   });
-  const translateX = withSpring({
+  const translateX = useSpring({
     value: translation.x,
     velocity: velocity.x,
     state,
