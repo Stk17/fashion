@@ -1,9 +1,11 @@
 import DrawerItem, {DrawerItemProps} from './DrawerItem';
 import React from 'react';
 import {Dimensions, Image} from 'react-native';
-import {Box, useTheme, Text, RoundedIconButton} from '../../components';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {Box, useTheme, Text, Header} from '../../components';
 
+import {DrawerActions, useNavigation} from '@react-navigation/native';
+
+export const assets = [require('../../../assets/drawer.png')];
 const {width} = Dimensions.get('window');
 export const DRAWER_WIDTH = width * 0.8;
 const aspectRatio = 750 / 1125;
@@ -48,7 +50,7 @@ const items: DrawerItemProps[] = [
 ];
 const Drawer = () => {
   const theme = useTheme();
-  const insets = useSafeAreaInsets();
+  const navigation = useNavigation();
   return (
     <Box flex={1}>
       <Box flex={0.2} backgroundColor="white">
@@ -59,43 +61,20 @@ const Drawer = () => {
           right={0}
           bottom={0}
           borderBottomRightRadius="xl"
-          backgroundColor="secondary"
-          flexDirection="row"
-          paddingHorizontal="m"
-          justifyContent="space-between"
-          style={{paddingTop: insets.top}}>
-          <RoundedIconButton
-            name="x"
-            size={24}
-            color="white"
-            backgroundColor="secondary"
-            onPress={() => true}
-          />
-          <Text color="white"> MY PROFILE</Text>
-          <RoundedIconButton
-            size={24}
-            name="shopping-bag"
-            color="white"
-            backgroundColor="secondary"
-            onPress={() => true}
+          backgroundColor="secondary">
+          <Header
+            title="Menu"
+            left={{icon: 'x', onPress: () => true}}
+            right={{
+              icon: 'shopping-bag',
+              onPress: () => navigation.dispatch(DrawerActions.closeDrawer()),
+            }}
+            dark
           />
         </Box>
       </Box>
       <Box flex={0.8}>
         <Box flex={1} backgroundColor="secondary" />
-        <Box flex={1} backgroundColor="primaryLight" />
-        <Image
-          source={require('../../../assets/pattern3.png')}
-          style={{
-            width: DRAWER_WIDTH,
-            height,
-            left: 0,
-            right: 0,
-            top: -height * 0.61,
-            position: 'absolute',
-          }}
-        />
-
         <Box
           position="absolute"
           top={0}
@@ -108,15 +87,7 @@ const Drawer = () => {
           justifyContent="center"
           padding="xl"
         />
-        <Box
-          position="absolute"
-          left={DRAWER_WIDTH / 2 - 50}
-          top={-50}
-          backgroundColor="primary"
-          width={100}
-          height={100}
-          style={{borderRadius: 50}}
-        />
+
         <Box marginVertical="m">
           <Text variant="title1" textAlign="center">
             Mike Peter
@@ -136,14 +107,10 @@ const Drawer = () => {
         overflow="hidden"
         height={height * 0.61}>
         <Image
-          source={require('../../../assets/pattern3.png')}
+          source={assets[0]}
           style={{
             width: DRAWER_WIDTH,
             height,
-            left: 0,
-            right: 0,
-            top: -height * (1 - 0.61),
-            position: 'absolute',
             borderTopLeftRadius: theme.borderRadii.xl,
           }}
         />

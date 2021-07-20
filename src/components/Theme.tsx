@@ -7,6 +7,7 @@ export const theme = {
     text: 'rgba(12,13,52,0.7)',
     white: 'white',
     grey: '#F4F0EF',
+    lightGrey: '#FAFAFA',
     darkGrey: '#8A8D90',
     danger: '#FF0058',
     primaryLight: '#E7F9F7',
@@ -14,6 +15,7 @@ export const theme = {
     yellow: '#FFC641',
     pink: '#FF87A2',
     violet: '#442CB9',
+    lightBlue: '#BFEAF5',
   },
   spacing: {
     s: 8,
@@ -58,6 +60,12 @@ export const theme = {
       fontFamily: 'SFProDisplay-Regular',
       color: 'text',
       textAlign: 'center',
+    },
+    header: {
+      fontSize: 12,
+      lineHeight: 24,
+      fontFamily: 'SFProDisplay-SemiBold',
+      color: 'secondary',
     },
   },
   breakpoints: {},
