@@ -19,7 +19,7 @@ export const palette = {
   lightBlue: '#BFEAF5',
   violet: '#442CB9',
 };
-const theme = {
+export const theme = {
   aspectRatio: width / 375,
   colors: {
     primary: palette.green,
@@ -103,14 +103,13 @@ const theme = {
   },
 };
 
-export const ThemeProvider = ({children}: {children: ReactNode}) => {
-  <ReStyleThemeProvider {...{theme}}>{children}</ReStyleThemeProvider>;
-};
+//export const ThemeProvider = ({children}: {children: ReactNode}) => {
+//<ReStyleThemeProvider {...{theme}}>{children}</ReStyleThemeProvider>;
+//};
 export type Theme = typeof theme;
 export const Text = createText<Theme>();
 export const Box = createBox<Theme>();
 export const useTheme = () => useReTheme<Theme>();
-//export default theme;
 
 type NamedStyles<T> = {[P in keyof T]: ViewStyle | TextStyle | ImageStyle};
 

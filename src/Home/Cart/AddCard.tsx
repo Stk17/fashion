@@ -1,7 +1,7 @@
 import React from 'react';
 import CardLayout from './CardLayout';
 import {Box} from '../../components';
-import {Icon} from 'react-native-vector-icons/Icon';
+import Icon from 'react-native-vector-icons/Feather';
 const AddCard = () => {
   return (
     <CardLayout onPress={() => true} backgroundColor="background">

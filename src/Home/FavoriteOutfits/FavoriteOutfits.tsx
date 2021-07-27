@@ -69,7 +69,7 @@ const FavoritesOutfits = ({
   const transition = (
     <Transition.Together>
       <Transition.Out type="fade" />
-      <Transition.In type="fade" />;
+      <Transition.In type="fade" />
     </Transition.Together>
   );
 
@@ -126,7 +126,6 @@ const FavoritesOutfits = ({
             label="Add to Favorites"
             onPress={() => {
               list.current?.animateNextTransition();
-
               setOutfits(outfits.filter(outfit => !outfit.selected));
             }}
           />

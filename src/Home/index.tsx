@@ -1,13 +1,14 @@
 import * as React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import DrawerContent, {DRAWER_WIDTH} from './Drawer/Drawer';
-import OutfitIdeas from './OutfitIdeas';
+
 import {HomeRoutes} from '../components/Navigation';
 import EditProfile from './EditProfile';
 import FavoriteOutfits from './FavoriteOutfits/FavoriteOutfits';
 import TransactionHistory from './TransactionHistory';
 import Settings from './Settings';
 import Cart from './Cart';
+import OutfitIdeas from './Outfitideas';
 export {assets} from './Drawer';
 
 const Drawer = createDrawerNavigator<HomeRoutes>();
