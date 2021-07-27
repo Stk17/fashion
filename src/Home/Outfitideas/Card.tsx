@@ -82,7 +82,7 @@ const Card = ({onSwipe, source, step, index, aIndex}: CardProps) => {
         {translateX: translateX.value},
         {scale},
       ],
-      //backgroundColor: mixColor(position.value, '#C9E9E7', '#74BCB8'),
+      backgroundColor: mixColor(position.value, '#C9E9E7', '#74BCB8'),
     };
   });
   return (
