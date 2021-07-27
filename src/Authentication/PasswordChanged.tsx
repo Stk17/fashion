@@ -8,7 +8,7 @@ import {
   RoundedIcon,
 } from '../components';
 import {AuthNavigationProps} from '../components/Navigation';
-import Icon from 'react-native-vector-icons/Feather';
+//import Icon from 'react-native-vector-icons/Feather';
 const SIZE = 80;
 const PasswordChanged = ({
   navigation,
@@ -21,7 +21,7 @@ const PasswordChanged = ({
           <RoundedIconButton
             name="x"
             color="secondary"
-            backgroundColor="white"
+            backgroundColor="background"
             size={60}
             onPress={() => navigation.pop()}
           />

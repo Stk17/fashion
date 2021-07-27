@@ -1,19 +1,43 @@
-import {createText, createBox, useTheme as useReTheme} from '@shopify/restyle';
-import {ViewStyle, TextStyle, ImageStyle} from 'react-native';
-export const theme = {
+import React, {ReactNode} from 'react';
+import {
+  ThemeProvider as ReStyleThemeProvider,
+  createText,
+  createBox,
+  useTheme as useReTheme,
+} from '@shopify/restyle';
+
+import {ViewStyle, TextStyle, ImageStyle, Dimensions} from 'react-native';
+
+const {width} = Dimensions.get('window');
+export const aspectRatio = width / 375;
+export const palette = {
+  white: 'white',
+  orange: '#FE5E33',
+  yellow: '#FFC641',
+  pink: '#FF87A2',
+  green: '#2CB9B0',
+  lightBlue: '#BFEAF5',
+  violet: '#442CB9',
+};
+const theme = {
+  aspectRatio: width / 375,
   colors: {
-    primary: '#2CB9B0',
-    secondary: '#0C0D34',
-    text: 'rgba(12,13,52,0.7)',
-    white: 'white',
-    grey: '#F4F0EF',
-    lightGrey: '#FAFAFA',
-    darkGrey: '#8A8D90',
-    danger: '#FF0058',
+    primary: palette.green,
     primaryLight: '#E7F9F7',
-    orange: '#FE5E33',
-    yellow: '#FFC641',
-    pink: '#FF87A2',
+    secondary: '#0C0D34',
+    danger: '#FF0058',
+    info: '#808080',
+    edit: palette.lightBlue,
+    text: 'rgba(12,13,52,0.7)',
+    textContrast: palette.white,
+    background: palette.white,
+    background2: '#F4F0EF',
+    graph1: palette.orange,
+    graph2: palette.yellow,
+    drawer1: palette.orange,
+    drawer2: palette.yellow,
+    drawer3: palette.pink,
+    drawer4: palette.violet,
     violet: '#442CB9',
     lightBlue: '#BFEAF5',
   },
@@ -48,6 +72,11 @@ export const theme = {
       fontFamily: 'SFProDisplay-SemiBold',
       color: 'secondary',
     },
+    title3: {
+      fontSize: 16,
+      fontFamily: 'SFProDisplay-SemiBold',
+      color: 'secondary',
+    },
     body: {
       fontSize: 16,
       lineHeight: 24,
@@ -57,7 +86,7 @@ export const theme = {
     button: {
       fontSize: 15,
       //lineHeight: 24,
-      fontFamily: 'SFProDisplay-Regular',
+      fontFamily: 'SFProDisplay-Medium',
       color: 'text',
       textAlign: 'center',
     },
@@ -68,7 +97,14 @@ export const theme = {
       color: 'secondary',
     },
   },
-  breakpoints: {},
+  breakpoints: {
+    phone: 0,
+    tablet: 768,
+  },
+};
+
+export const ThemeProvider = ({children}: {children: ReactNode}) => {
+  <ReStyleThemeProvider {...{theme}}>{children}</ReStyleThemeProvider>;
 };
 export type Theme = typeof theme;
 export const Text = createText<Theme>();

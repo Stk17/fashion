@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import {Image, StyleSheet, Platform, StatusBar, Dimensions} from 'react-native';
+import {Image, StyleSheet, StatusBar, Dimensions} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Box, useTheme} from './Theme';
@@ -27,10 +27,9 @@ const Container = ({children, footer, pattern}: ContainerProps) => {
     <KeyboardAwareScrollView scrollEnabled={false}>
       <Box backgroundColor="secondary">
         <StatusBar barStyle="light-content" />
-        <Box backgroundColor="white">
+        <Box backgroundColor="background">
           <Box
             borderBottomLeftRadius="xl"
-            borderBottomRightRadius={0}
             overflow="hidden"
             height={height * 0.61}>
             <Image
@@ -57,9 +56,7 @@ const Container = ({children, footer, pattern}: ContainerProps) => {
         <Box
           flex={1}
           borderRadius="xl"
-          borderTopLeftRadius={0}
-          backgroundColor="white"
-          flex={1}
+          backgroundColor="background"
           justifyContent="center"
           padding="xl">
           {children}

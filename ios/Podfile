@@ -12,6 +12,8 @@ target 'fashion' do
     :hermes_enabled => false
   )
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
   target 'fashionTests' do
     inherit! :complete
     # Pods for testing

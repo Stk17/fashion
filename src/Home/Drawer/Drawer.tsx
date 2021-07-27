@@ -1,9 +1,14 @@
 import DrawerItem, {DrawerItemProps} from './DrawerItem';
 import React from 'react';
 import {Dimensions, Image} from 'react-native';
-import {Box, useTheme, Text, Header} from '../../components';
+import {Box, useTheme, Text} from '../../components';
 
-import {DrawerActions, useNavigation} from '@react-navigation/native';
+import {
+  CommonActions,
+  DrawerActions,
+  useNavigation,
+} from '@react-navigation/native';
+import Header from '../../components/Header';
 
 export const assets = [require('../../../assets/drawer.png')];
 const {width} = Dimensions.get('window');
@@ -12,7 +17,7 @@ const aspectRatio = 750 / 1125;
 const height = DRAWER_WIDTH * aspectRatio;
 const items: DrawerItemProps[] = [
   {
-    icon: 'flash',
+    icon: 'zap',
     label: 'Outfit Ideas',
     screen: 'OutfitIdeas',
     color: 'primary',
@@ -21,30 +26,36 @@ const items: DrawerItemProps[] = [
     icon: 'heart',
     label: 'Favorite Outfits',
     screen: 'FavoriteOutfits',
-    color: 'orange',
+    color: 'drawer1',
   },
   {
     icon: 'user',
     label: 'Edit Profile',
-    screen: 'EditProfile',
-    color: 'yellow',
+    screen: 'FavoriteOutfits',
+    color: 'drawer2',
   },
   {
     icon: 'clock',
     label: 'Transaction History',
     screen: 'TransactionHistory',
-    color: 'pink',
+    color: 'drawer3',
   },
   {
     icon: 'settings',
     label: 'Notification Settings',
-    screen: 'NotificationSettings',
-    color: 'violet',
+    screen: 'Settings',
+    color: 'drawer4',
   },
   {
     icon: 'log-out',
     label: 'Logout',
-    screen: 'Logout',
+    onPress: navigation =>
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [{name: 'Authentication'}],
+        }),
+      ),
     color: 'secondary',
   },
 ];
@@ -53,7 +64,7 @@ const Drawer = () => {
   const navigation = useNavigation();
   return (
     <Box flex={1}>
-      <Box flex={0.2} backgroundColor="white">
+      <Box flex={0.2} backgroundColor="background">
         <Box
           position="absolute"
           top={0}
@@ -64,10 +75,13 @@ const Drawer = () => {
           backgroundColor="secondary">
           <Header
             title="Menu"
-            left={{icon: 'x', onPress: () => true}}
+            left={{
+              icon: 'x',
+              onPress: () => navigation.dispatch(DrawerActions.closeDrawer()),
+            }}
             right={{
               icon: 'shopping-bag',
-              onPress: () => navigation.dispatch(DrawerActions.closeDrawer()),
+              onPress: () => navigation.navigate('Cart'),
             }}
             dark
           />
@@ -81,13 +95,21 @@ const Drawer = () => {
           left={0}
           right={0}
           bottom={0}
-          backgroundColor="white"
+          backgroundColor="background"
           borderTopLeftRadius="xl"
           borderBottomRightRadius="xl"
           justifyContent="center"
           padding="xl"
         />
-
+        <Box
+          position="absolute"
+          left={DRAWER_WIDTH / 2 - 50}
+          top={-50}
+          backgroundColor="primary"
+          width={100}
+          height={100}
+          style={{borderRadius: 50}}
+        />
         <Box marginVertical="m">
           <Text variant="title1" textAlign="center">
             Mike Peter
@@ -98,11 +120,11 @@ const Drawer = () => {
         </Box>
 
         {items.map(item => (
-          <DrawerItem key={item.screen} {...item} />
+          <DrawerItem key={item.icon} {...item} />
         ))}
       </Box>
       <Box
-        backgroundColor="white"
+        backgroundColor="background"
         width={DRAWER_WIDTH}
         overflow="hidden"
         height={height * 0.61}>

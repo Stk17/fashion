@@ -44,7 +44,7 @@ const TextInput = forwardRef<RNTextInput, TextInputProps>(
           <RoundedIcon
             name={!error ? 'check' : 'x'}
             backgroundColor={!error ? 'primary' : 'danger'}
-            color="white"
+            color="background"
             size={SIZE}
           />
         )}

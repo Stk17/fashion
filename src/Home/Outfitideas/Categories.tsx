@@ -1,6 +1,7 @@
-import Category from './Category';
 import React from 'react';
 import {ScrollView, View} from 'react-native';
+import Category from './Category';
+
 const categories = [
   {
     id: 'newin',

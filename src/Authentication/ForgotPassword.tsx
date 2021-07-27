@@ -1,10 +1,7 @@
 import React from 'react';
 import {Linking} from 'react-native';
 import {Box, Container, Button, Text} from '../components';
-import {
-  AuthenticationRoutes,
-  AuthNavigationProps,
-} from '../components/Navigation';
+import {AuthNavigationProps} from '../components/Navigation';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {TextInput} from '../components/Form';

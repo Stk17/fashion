@@ -1,16 +1,20 @@
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
-import {Box, useTheme} from '../../components/Theme';
+import {Box, palette, useTheme} from '../../components/Theme';
 
 const Background = () => {
   const theme = useTheme();
   return (
     <View style={StyleSheet.absoluteFill}>
-      <Box flex={1 / 3} backgroundColor="lightBlue">
-        <Box flex={1} backgroundColor="white" borderBottomRightRadius="xl" />
+      <Box flex={1 / 3} style={{backgroundColor: palette.lightBlue}}>
+        <Box
+          flex={1}
+          backgroundColor="background"
+          borderBottomRightRadius="xl"
+        />
       </Box>
       <Box flex={1 / 3} />
-      <Box flex={1} backgroundColor="white" />
+      <Box flex={1} backgroundColor="background" />
       <Box flex={1} backgroundColor="secondary" />
       <Image
         source={require('../../../assets/background.png')}
@@ -23,7 +27,7 @@ const Background = () => {
         }}
       />
 
-      <Box flex={1 / 3} backgroundColor="lightBlue">
+      <Box flex={1 / 3} style={{backgroundColor: palette.lightBlue}}>
         <Box flex={1} backgroundColor="secondary" borderTopLeftRadius="xl" />
       </Box>
     </View>

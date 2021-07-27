@@ -1,37 +1,36 @@
 import React, {useState} from 'react';
-import {sub} from 'react-native-reanimated';
-import {Box, Header} from '../../components';
+import {useTiming} from 'react-native-redash';
+import {Box} from '../../components';
+import Header from '../../components/Header';
 import {HomeNavigationProps} from '../../components/Navigation';
 import Background from './Background';
 import Card from './Card';
 import Categories from './Categories';
-import {useTransition} from 'react-native-redash';
-
 const cards = [
   {
     index: 3,
-    source: require('../../Authentication/assets/4.png'),
+    source: require('../../../assets/4.png'),
   },
   {
     index: 2,
-    source: require('../../Authentication/assets/3.png'),
+    source: require('../../../assets/3.png'),
   },
   {
     index: 1,
-    source: require('../../Authentication/assets/2.png'),
+    source: require('../../../assets/2.png'),
   },
   {
     index: 0,
-    source: require('../../Authentication/assets/1.png'),
+    source: require('../../../assets/1.png'),
   },
 ];
 const step = 1 / (cards.length - 1);
 
 const OutfitIdeas = ({navigation}: HomeNavigationProps<'OutfitIdeas'>) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const aIndex = useTransition(currentIndex);
+  const aIndex = useTiming(currentIndex);
   return (
-    <Box flex={1} backgroundColor="white">
+    <Box flex={1} backgroundColor="background">
       <Header
         title="Outfit Ideas"
         left={{icon: 'menu', onPress: () => navigation.openDrawer()}}
@@ -45,9 +44,11 @@ const OutfitIdeas = ({navigation}: HomeNavigationProps<'OutfitIdeas'>) => {
             currentIndex < index * step + step && (
               <Card
                 key={index}
-                position={sub(index * step, aIndex)}
+                index={index}
+                aIndex={aIndex}
+                step={step}
                 onSwipe={() => setCurrentIndex(prev => prev + step)}
-                {...{source, step}}
+                {...{source}}
               />
             ),
         )}

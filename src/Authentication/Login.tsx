@@ -8,8 +8,8 @@ import {AuthNavigationProps} from '../components/Navigation';
 import {useFormik} from 'formik';
 import Footer from './components/Footer';
 import * as Yup from 'yup';
-
 import {BorderlessButton} from 'react-native-gesture-handler';
+import {CommonActions} from '@react-navigation/routers';
 
 const LoginSchema = Yup.object().shape({
   password: Yup.string()
@@ -31,7 +31,13 @@ const Login = ({navigation}: AuthNavigationProps<'Login'>) => {
   } = useFormik({
     validationSchema: LoginSchema,
     initialValues: {email: '', password: '', remember: true},
-    onSubmit: () => navigation.navigate('OutfitIdeas'),
+    onSubmit: () =>
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [{name: ' Home'}],
+        }),
+      ),
   });
   const password = useRef<RNTextInput>(null);
   const footer = (
@@ -49,6 +55,7 @@ const Login = ({navigation}: AuthNavigationProps<'Login'>) => {
       <Text variant="body" textAlign="center" marginBottom="l">
         Use your credentials below and login to your account
       </Text>
+
       <Box>
         <Box marginBottom="m">
           <TextInput

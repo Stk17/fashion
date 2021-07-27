@@ -1,1 +1,2 @@
-export {default} from "./Outfitideas"
+export { default } from "./Outfitideas"
+ 

@@ -1,12 +1,12 @@
 import React, {useRef} from 'react';
 import {View, StyleSheet, Dimensions, Image} from 'react-native';
 import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  useAnimatedScrollHandler,
   Extrapolate,
   interpolate,
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
   useDerivedValue,
+  useSharedValue,
 } from 'react-native-reanimated';
 import {interpolateColor} from 'react-native-reanimated';
 import {AuthNavigationProps} from '../../components/Navigation';
@@ -20,7 +20,7 @@ const {width} = Dimensions.get('window');
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'theme.colors.background',
   },
   underlay: {
     ...StyleSheet.absoluteFillObject,
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   footerContent: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'theme.colors.background',
     borderTopLeftRadius: theme.borderRadii.xl,
   },
   pagination: {
@@ -49,8 +49,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
   },
 }));
-
-const slides = [
+interface Slide {
+  title: string;
+  subtitle: string;
+  description: string;
+  color: string;
+  picture: {
+    width: number;
+    height: number;
+    src: number;
+  };
+}
+const slides: Slide[] = [
   {
     title: 'Relaxed',
     color: '#BFEAF5',
@@ -127,7 +137,7 @@ const Onboarding = ({navigation}: AuthNavigationProps<'Onboarding'>) => {
     },
   });
   const currentIndex = useDerivedValue(() => x.value / width);
-  const transfromStyle = useAnimatedStyle(() => ({
+  const footerStyle = useAnimatedStyle(() => ({
     transform: [{translateX: -x.value}],
   }));
 
@@ -188,7 +198,7 @@ const Onboarding = ({navigation}: AuthNavigationProps<'Onboarding'>) => {
                 flexDirection: 'row',
                 width: width * slides.length,
               },
-              transfromStyle,
+              footerStyle,
             ]}>
             {slides.map(({subtitle, description}, index) => {
               const last = index === slides.length - 1;

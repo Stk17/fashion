@@ -15,11 +15,11 @@ export const assets = [picture.src];
 const Welcome = ({navigation}: AuthNavigationProps<'Welcome'>) => {
   const theme = useTheme();
   return (
-    <Box flex={1} backgroundColor="white">
+    <Box flex={1} backgroundColor="background">
       <Box
         flex={1}
         borderBottomRightRadius="xl"
-        backgroundColor="grey"
+        backgroundColor="background2"
         alignItems="center"
         justifyContent="flex-end">
         <Image
@@ -33,7 +33,7 @@ const Welcome = ({navigation}: AuthNavigationProps<'Welcome'>) => {
       </Box>
       <Box flex={1} borderTopLeftRadius="xl">
         <Box
-          backgroundColor="grey"
+          backgroundColor="background2"
           position="absolute"
           top={0}
           left={0}
@@ -41,7 +41,7 @@ const Welcome = ({navigation}: AuthNavigationProps<'Welcome'>) => {
           bottom={0}
         />
         <Box
-          backgroundColor="white"
+          backgroundColor="background2"
           borderTopLeftRadius="xl"
           justifyContent="space-evenly"
           flex={1}
@@ -54,7 +54,7 @@ const Welcome = ({navigation}: AuthNavigationProps<'Welcome'>) => {
           <Button
             variant="primary"
             label="Have an account? Login"
-            onPress={() => navigation.navigate('Login')}
+            onPress={() => navigation.navigate('Home')}
           />
           <Button
             label="Join us, it's free"
